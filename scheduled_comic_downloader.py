@@ -4,11 +4,9 @@
 
 import logging
 import os
+from concurrent.futures import ThreadPoolExecutor
 import requests
 import bs4
-
-# import lxml
-import concurrent.futures
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -57,7 +55,7 @@ def check_pizza_cake():
     ]
 
     if len(missing_pizza_cake) > 10:
-        with concurrent.futures.ThreadPoolExecutor() as executor:
+        with ThreadPoolExecutor() as executor:
             executor.map(download_comic, missing_pizza_cake)
     else:
         for comic in missing_pizza_cake:
