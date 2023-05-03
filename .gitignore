@@ -6,3 +6,4 @@ venv
 credentials*.json
 logging.txt
 /pizza_cake
+*.command
