@@ -17,6 +17,12 @@ logging.basicConfig(
 )
 # logging.disable(logging.CRITICAL)  # Note out to enable logging.
 
+# web_comics_urls = {
+#     "pizza_cake": "https://pizzacakecomic.com",
+#     "savage_chickens": "https://www.savagechickens.com",
+#     "butter_safe": "https://www.buttersafe.com",
+# }
+
 
 def get_pizza_cake():
     pizza_cake = []
@@ -25,7 +31,7 @@ def get_pizza_cake():
     soup = bs4.BeautifulSoup(res.text, "lxml")
     for link in soup.find_all("img"):
         image_link = link.get("src")
-        if image_link.endswith(".png"):
+        if image_link.endswith((".png", ".jpg")):
             pizza_cake.append(link.get("src"))
     os.makedirs("./pizza_cake", exist_ok=True)
     return pizza_cake
@@ -43,9 +49,7 @@ def download_comic(comic):
 
 def check_pizza_cake():
     pizza_list = get_pizza_cake()
-
     existing_files = os.listdir("./pizza_cake")
-
     missing_pizza_cake = [
         file_name
         for file_name in pizza_list
