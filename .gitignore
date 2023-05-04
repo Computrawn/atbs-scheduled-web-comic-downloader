@@ -4,6 +4,6 @@
 .idea
 venv
 credentials*.json
-logging.txt
+*logging.txt
 /pizza_cake
 *.command
