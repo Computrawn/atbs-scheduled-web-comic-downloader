@@ -2,9 +2,6 @@
 # scheduled_comic_downloader.py — An exercise in keeping time and scheduling.
 # For more information, see project_details.txt.
 
-#! python3
-# comicdldr_class.py — First try at OOP.
-
 import logging
 import os
 import requests
@@ -19,11 +16,15 @@ logging.disable(logging.CRITICAL)  # Note out to enable logging.
 
 
 class Comic:
-    def __init__(self, name, website):
+    """Instantiate Comic class."""
+
+    def __init__(self, name, website, extension):
         self.name = name
         self.website = website
+        self.extenstion = extension
 
     def get_comic(self):
+        """Download comics from designated site."""
         comic_list = []
         res = requests.get(self.website)
         res.raise_for_status()
@@ -31,8 +32,7 @@ class Comic:
 
         for link in soup.find_all("img"):
             image_link = link.get("src")
-
-            if image_link.endswith((".png", ".jpg", ".gif")):
+            if image_link.endswith(self.extenstion):
                 comic_list.append(link.get("src"))
 
         os.makedirs(f"./{self.name}", exist_ok=True)
@@ -40,17 +40,11 @@ class Comic:
         existing_files = os.listdir(f"./{self.name}")
         ignore_files = [
             "callout-store3.jpg",
-            "ebookad410_fear.gif",
-            "footerlogo.gif",
             "icon_chickens100.jpg",
             "icon_computer.jpg",
-            "icon_random.gif",
             "LMRB4hero250.jpg",
             "mug.jpg",
             "Savage_Chickens_Logo.jpg",
-            "wfacebook.gif",
-            "wtvtropes.gif",
-            "wtwitter.gif",
         ]
         missing_files = [
             file_name
@@ -69,9 +63,9 @@ class Comic:
                     f.write(chunk)
 
 
-comic_1 = Comic("pizza_cake", "https://pizzacakecomic.com")
-comic_2 = Comic("savage_chickens", "https://www.savagechickens.com")
-comic_3 = Comic("wonderella", "https://nonadventures.com")
+comic_1 = Comic("pizza_cake", "https://pizzacakecomic.com", ".png")
+comic_2 = Comic("savage_chickens", "https://www.savagechickens.com", ".jpg")
+comic_3 = Comic("wonderella", "https://nonadventures.com", ".png")
 
 comic_1.get_comic()
 comic_2.get_comic()
