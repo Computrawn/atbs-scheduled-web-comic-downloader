@@ -45,6 +45,7 @@ class Comic:
             "LMRB4hero250.jpg",
             "mug.jpg",
             "Savage_Chickens_Logo.jpg",
+            "ebook_ad4102.jpg",
         ]
         missing_files = [
             file_name
