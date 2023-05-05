@@ -66,13 +66,13 @@ class Comic:
                     f.write(chunk)
 
 
-comic_1 = Comic("pizza_cake", "https://pizzacakecomic.com", ".png")
-comic_2 = Comic("savage_chickens", "https://www.savagechickens.com", ".jpg")
-comic_3 = Comic("wonderella", "https://nonadventures.com", ".png")
+Pizza_Cake = Comic("pizza_cake", "https://pizzacakecomic.com", ".png")
+Savage_Chickens = Comic("savage_chickens", "https://www.savagechickens.com", ".jpg")
+Wonderella = Comic("wonderella", "https://nonadventures.com", ".png")
 
-schedule.every().friday.at("14:40").do(comic_1.get_comic)
-schedule.every().friday.at("14:41").do(comic_2.get_comic)
-schedule.every().friday.at("14:42").do(comic_3.get_comic)
+schedule.every().friday.at("14:40").do(Pizza_Cake.get_comic)
+schedule.every().friday.at("14:41").do(Savage_Chickens.get_comic)
+schedule.every().friday.at("14:42").do(Wonderella.get_comic)
 
 
 while True:
