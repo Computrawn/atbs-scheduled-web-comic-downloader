@@ -71,8 +71,8 @@ Savage_Chickens = Comic("savage_chickens", "https://www.savagechickens.com", ".j
 Wonderella = Comic("wonderella", "https://nonadventures.com", ".png")
 
 schedule.every().friday.at("14:40").do(Pizza_Cake.get_comic)
-schedule.every().friday.at("14:41").do(Savage_Chickens.get_comic)
-schedule.every().friday.at("14:42").do(Wonderella.get_comic)
+schedule.every().friday.at("14:45").do(Savage_Chickens.get_comic)
+schedule.every().friday.at("14:50").do(Wonderella.get_comic)
 
 
 while True:
