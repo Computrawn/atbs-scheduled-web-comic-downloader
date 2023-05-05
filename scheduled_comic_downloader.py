@@ -4,6 +4,8 @@
 
 import logging
 import os
+import time
+import schedule
 import requests
 import bs4
 
@@ -16,7 +18,7 @@ logging.disable(logging.CRITICAL)  # Note out to enable logging.
 
 
 class Comic:
-    """Instantiate Comic class."""
+    """Create Comic class."""
 
     def __init__(self, name, website, extension):
         self.name = name
@@ -68,6 +70,11 @@ comic_1 = Comic("pizza_cake", "https://pizzacakecomic.com", ".png")
 comic_2 = Comic("savage_chickens", "https://www.savagechickens.com", ".jpg")
 comic_3 = Comic("wonderella", "https://nonadventures.com", ".png")
 
-comic_1.get_comic()
-comic_2.get_comic()
-comic_3.get_comic()
+schedule.every().friday.at("14:40").do(comic_1.get_comic)
+schedule.every().friday.at("14:41").do(comic_2.get_comic)
+schedule.every().friday.at("14:42").do(comic_3.get_comic)
+
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)

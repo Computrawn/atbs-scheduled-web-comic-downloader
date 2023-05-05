@@ -6,3 +6,8 @@ and cron on Linux) can run your Python program once a day. The Python program it
 can download the comic and then copy it to your desktop so that it is easy to find. 
 This will free you from having to check the website yourself to see whether it has updated. 
 (A list of web comics is available at https://nostarch.com/automatestuff2/.)
+
+Modifications:
+* Wrote program as a class.
+* Used schedule module to bypass creating launchd daemon 
+  (I don't really want to run this all the time.)
