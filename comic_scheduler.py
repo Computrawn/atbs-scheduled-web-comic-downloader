@@ -25,8 +25,8 @@ def get_wonderella():
     wonderella.download_new_comics(the_list)
 
 
-schedule.every().monday.at("13:47").do(get_pizza_cake)
-schedule.every().monday.at("12:10").do(get_savage_chickens)
+schedule.every().monday.at("13:57").do(get_pizza_cake)
+schedule.every().monday.at("14:00").do(get_savage_chickens)
 schedule.every().monday.at("13:45").do(get_wonderella)
 
 
