@@ -58,7 +58,7 @@ class Comic:
         ]
 
         for comic in missing_files:
-            comic_res = requests.get(comic)
+            comic_res = requests.get(comic, timeout=10)
             comic_res.raise_for_status()
             comic_name = comic.split("/")[-1]
             print(f"Downloading {comic_name} ...")
