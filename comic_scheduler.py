@@ -1,3 +1,6 @@
+#! python3
+# comic_scheduler.py — An exercise in scheduling.
+
 import time
 import schedule
 from comic import Comic

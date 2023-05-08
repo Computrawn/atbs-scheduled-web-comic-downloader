@@ -11,3 +11,4 @@ Modifications:
 * Wrote program as a class.
 * Used schedule module to bypass creating launchd daemon 
   (I don't really want to run this all the time.)
+* Split code up into two python files — comic.py and comic_scheduler.py.

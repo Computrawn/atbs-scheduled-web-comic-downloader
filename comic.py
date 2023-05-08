@@ -1,11 +1,9 @@
 #! python3
-# scheduled_comic_downloader.py — An exercise in keeping time and scheduling.
+# comic.py — An exercise in writing a Class.
 # For more information, see project_details.txt.
 
 import logging
 import os
-import time
-import schedule
 import requests
 import bs4
 
@@ -67,33 +65,3 @@ class Comic:
             with open(f"./{self.name}/{comic_name}", "wb") as f:
                 for chunk in comic_res.iter_content(100_000):
                     f.write(chunk)
-
-
-# pizza_cake = Comic("pizza_cake", "https://pizzacakecomic.com", ".png")
-# savage_chickens = Comic("savage_chickens", "https://www.savagechickens.com", ".jpg")
-# wonderella = Comic("wonderella", "https://nonadventures.com", ".png")
-
-
-# def get_pizza_cake():
-#     the_list = pizza_cake.get_comic_list()
-#     pizza_cake.download_new_comics(the_list)
-
-
-# def get_savage_chickens():
-#     the_list = savage_chickens.get_comic_list()
-#     savage_chickens.download_new_comics(the_list)
-
-
-# def get_wonderella():
-#     the_list = wonderella.get_comic_list()
-#     wonderella.download_new_comics(the_list)
-
-
-# schedule.every().monday.at("12:00").do(get_pizza_cake)
-# schedule.every().monday.at("12:10").do(get_savage_chickens)
-# schedule.every().monday.at("12:20").do(get_wonderella)
-
-
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
