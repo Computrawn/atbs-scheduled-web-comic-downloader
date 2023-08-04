@@ -9,26 +9,18 @@ pizza_cake = Comic("pizza_cake", "https://pizzacakecomic.com", ".png")
 savage_chickens = Comic("savage_chickens", "https://www.savagechickens.com", ".jpg")
 wonderella = Comic("wonderella", "https://nonadventures.com", ".png")
 
-
-def get_pizza_cake():
-    the_list = pizza_cake.get_comic_list()
-    pizza_cake.download_new_comics(the_list)
+THE_LIST = [pizza_cake, savage_chickens, wonderella]
+THE_TIME = "11:30"
 
 
-def get_savage_chickens():
-    the_list = savage_chickens.get_comic_list()
-    savage_chickens.download_new_comics(the_list)
+def get_comic(comics):
+    """Download any missing comics from website's front page."""
+    for comic in comics:
+        comic_list = comic.get_comic_list()
+        comic.download_new_comics(comic_list)
 
 
-def get_wonderella():
-    the_list = wonderella.get_comic_list()
-    wonderella.download_new_comics(the_list)
-
-
-schedule.every().monday.at("13:57").do(get_pizza_cake)
-schedule.every().monday.at("14:00").do(get_savage_chickens)
-schedule.every().monday.at("13:45").do(get_wonderella)
-
+schedule.every().tuesday.at(THE_TIME).do(get_comic, comic_list=THE_LIST)
 
 while True:
     schedule.run_pending()
